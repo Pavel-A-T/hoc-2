@@ -30,15 +30,16 @@ function Article(props) {
 const Hoc = (Component) => (props) => {
     if (props.views > 1000) {
         return (
-            <Popular   />
+            <Popular><Component {...props}/></Popular>
         )
-    }
-    if (props.view < 100) {
+    } else if (props.views < 100) {
         return (
-            <New  />
+            <New><Component {...props}/></New>
         )
     }
+    return <Component {...props}/>;
 }
+
 
 function Video(props) {
     return (
