@@ -40,6 +40,9 @@ const Hoc = (Component) => (props) => {
     return <Component {...props}/>;
 }
 
+const HocVideo = Hoc(Video);
+const HocArticle = Hoc(Article);
+
 
 function Video(props) {
     return (
@@ -55,12 +58,12 @@ function List(props) {
         switch (item.type) {
             case 'video':
                 return (
-                    Hoc(Video)(item)
+                    <HocVideo {...item} />
                 );
 
             case 'article':
                 return (
-                    Hoc(Article)(item)
+                    <HocArticle {...item} />
                 );
         }
     });
